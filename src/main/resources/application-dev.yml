@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db2?useUnicode=true&characterEncoding=utf8&useSSL=true
+    username: root
+    password: 1234
+
+  #邮箱验证码配置
+  mail:
+    #smtp服务主机  qq邮箱则为smtp.qq.com; 163邮箱是smtp.163.com
+    host: smtp.qq.com
+    #服务协议
+    protocol: smtp
+    # 编码集
+    default-encoding: UTF-8
+    #发送邮件的账户
+    userName: 2023771703@qq.com
+    #授权码:前面生成
+    password: tmgffnmodnqzbjij
+    # 昵称
+    nickname: 湖南省人民政府
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true  #启用SMTP认证
+          starttls:
+            enable: true
+            required: true  #必须采用加密链接
+
+  #以下可以不配置，默认自带
+
+  # 配置redis缓存
+  redis:
+    # Redis索引0~15，默认为0
+    database: 0
+    # Redis服务器IP
+    host: 127.0.0.1
+    # 端口号
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 超时时间（毫秒）
+    timeout: 10000ms
+
+    lettuce:
+      # 连接池
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 20
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最小空闲连接
+        min-idle: 0
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #指定Mybatis日志打印
+    map-underscore-to-camel-case: true  #开启自动驼峰命名规则映射
+  type-aliases-package: cn.cstengxun.deng.demo1.pojo
